@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Conor Notes</string>
+
+    <string name="mainTitle">All Notes</string>
+    <string name="inputNote">Write Note…</string>
+    <string name="inputTitle">Title</string>
+    <string name="save">Save Note</string>
+    <string name="delete">Delete Note</string>
+</resources>

@@ -1,0 +1,2 @@
+rootProject.name='Conor Notes'
+include ':app'
