@@ -14,7 +14,7 @@
         android:layout_weight="80">
 
         <TextView
-            android:id="@+id/noteDate"
+            android:id="@+id/nDate"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="center"
