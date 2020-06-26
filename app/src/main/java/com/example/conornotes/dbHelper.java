@@ -1,6 +1,8 @@
 package com.example.conornotes;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -9,7 +11,6 @@ public class dbHelper extends SQLiteOpenHelper {
     //Database info
     public static final String DB_Name = "Notebook";
     public static final String TABLE_NAME = "Notes";
-
     public static final String COL1 = "ID";
     public static final String COL2 = "Title";
     public static final String COL3 = "Content";
@@ -30,5 +31,49 @@ public class dbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    public boolean addNote(String Date, String Time, String Title, String Content){
+        /*
+        Preparing the database for setup
+        Making it editable and giving it content values
+         */
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        //Values
+        cv.put(COL2, Title);
+        cv.put(COL3, Content);
+        cv.put(COL4, Date);
+        cv.put(COL5, Time);
+
+        //Checking the data being inputted
+        long result = db.insert(TABLE_NAME, null, cv);
+        if(result == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Cursor getAllNotes(){
+        //Query to retrieve all notes made in database
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return data;
+    }
+
+    public Cursor getNote(String id){
+        //Retrieving a note based on ID
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id, null);
+        return data;
+    }
+
+    public void deleteNote(String id){
+        //Retrieving and deleting a note based on ID
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE ID = " + id;
+        db.execSQL(query);
     }
 }
