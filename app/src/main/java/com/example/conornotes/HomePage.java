@@ -40,7 +40,9 @@ public class HomePage extends AppCompatActivity {
                 noteList.add(notes);
             }
             //List adapter
-
+            notesList adapter = new notesList(this, R.layout.recycler_list, noteList);
+            listView = findViewById(R.id.notesList);
+            listView.setAdapter(adapter);
         }
     }
 }
