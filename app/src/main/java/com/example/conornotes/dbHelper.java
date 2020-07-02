@@ -11,7 +11,7 @@ public class dbHelper extends SQLiteOpenHelper {
     //Database info
     public static final String DB_Name = "Notebook";
     public static final String TABLE_NAME = "Notes";
-    public static final String COL1 = "ID";
+    public static final String COL1 = "ID"; //Doesn't get called as it is automatically created
     public static final String COL2 = "Title";
     public static final String COL3 = "Content";
     public static final String COL4 = "Date";
@@ -68,6 +68,20 @@ public class dbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id, null);
         return data;
+    }
+
+    public boolean amendNote(String id, String title, String content){
+        /*
+        Method for amending the notes, based on their current state
+        Date will remain the same as it is related to when the note was initially made
+        */
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COL1, id);
+        cv.put(COL2, title);
+        cv.put(COL3, content);
+        db.update(TABLE_NAME, cv, "ID = ?", new String[] {id});
+        return true;
     }
 
     public void deleteNote(String id){

@@ -14,11 +14,25 @@
         android:layout_weight="80">
 
         <TextView
+            android:id="@+id/nID"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
             android:id="@+id/nDate"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="20dp"
             android:gravity="center"
             android:text="Date"/>
+
+        <TextView
+            android:id="@+id/nTime"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="Time"/>
 
     </LinearLayout>
 
