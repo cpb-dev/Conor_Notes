@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Date and Time metadata
     Date present = new Date();
-    SimpleDateFormat fDate = new SimpleDateFormat("dd/MM/yyyy"),
+    SimpleDateFormat
+            fDate = new SimpleDateFormat("dd/MM/yyyy"),
             fTime = new SimpleDateFormat("HH:mm");
     String Date, Time;
 
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
     }

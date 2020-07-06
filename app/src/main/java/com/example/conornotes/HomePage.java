@@ -35,7 +35,8 @@ public class HomePage extends AppCompatActivity {
             Toast.makeText(HomePage.this, "No Notes Saved!", Toast.LENGTH_LONG).show();
         } else {
             while(data.moveToNext()){
-                notes = new Notes(data.getString(0), data.getString(1), data.getString(2),
+                notes = new Notes(data.getString(0),
+                        data.getString(1), data.getString(2),
                         data.getString(3), data.getString(4));
                 noteList.add(notes);
             }
