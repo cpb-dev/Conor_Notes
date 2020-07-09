@@ -2,6 +2,7 @@ package com.example.conornotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -23,6 +24,8 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         NoteBook = new dbHelper(this);
+
+        allNotes();
     }
 
     public void allNotes(){
@@ -33,6 +36,7 @@ public class HomePage extends AppCompatActivity {
         if (notesNo == 0){
             //If no data has been currently saved
             Toast.makeText(HomePage.this, "No Notes Saved!", Toast.LENGTH_LONG).show();
+            firstNote();
         } else {
             while(data.moveToNext()){
                 notes = new Notes(data.getString(0),
@@ -45,5 +49,11 @@ public class HomePage extends AppCompatActivity {
             listView = findViewById(R.id.notesList);
             listView.setAdapter(adapter);
         }
+    }
+
+    public void firstNote(){
+        //Method to launch the add note activity if there is no displayable content
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
